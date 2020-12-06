@@ -21,36 +21,36 @@ Vue.component('v-select', vSelect)
 Vue.component('default-layout', Default);
 Vue.component('userpages-layout', Pages);
 
-// router.beforeEach(async (to, _, next) => {
-//   // console.log(store.state.access_level, to.meta.access_level)
-//   await store.dispatch('checkAuthorization');
-//   if (!store.state.Authenticated) {
-//     if (to.path !== "/login" && to.path !== '/register' ) {
-//       console.log(to.path, 1)
-//       next("/login")
-//     } else {
-//       console.log(to.path, 2)
-//       next();
-//     }
-//   } else {
-//     if (to.path === ("/login" || '/register')) {
-//       console.log(to.path, 3)
-//       next("/directory");
-//     } else {
-//       console.log(to.path, 4)
-//       // if (
-//       //   to.meta &&
-//       //   !(to.meta.access_level || []).includes(store.state.access_level) &&
-//       //   to.path !== "/"
-//       // ) {
-//         next();
-//       // } else {
-//       //   next();
-//       // }
-//     }
-//   }
-//   // next()
-// });
+router.beforeEach(async (to, _, next) => {
+  // console.log(store.state.access_level, to.meta.access_level)
+  await store.dispatch('checkAuthorization');
+  if (!store.state.Authenticated) {
+    if (to.path !== "/login") {
+      console.log(to.path, 1)
+      next("/login")
+    } else {
+      console.log(to.path, 2)
+      next();
+    }
+  } else {
+    if (to.path === "/login") {
+      console.log(to.path, 3)
+      next("/");
+    } else {
+      console.log(to.path, 4)
+      // if (
+      //   to.meta &&
+      //   !(to.meta.access_level || []).includes(store.state.access_level) &&
+      //   to.path !== "/"
+      // ) {
+        next();
+      // } else {
+      //   next();
+      // }
+    }
+  }
+  // next()
+});
 
 new Vue({
   el: '#app',

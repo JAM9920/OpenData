@@ -26,6 +26,19 @@
                                 {{item && item.district && item.district.name}}
                             </div>
                             <img :src="item.image" alt="" class="district-img">
+                            <div class="map-detail">
+                                <ul>
+                                    <li>
+                                        <span>Average number of cars: </span> {{item.avg_num_cars}}
+                                    </li>
+                                    <li>
+                                        <span>Average speed of cars: </span> {{item.avg_speed_cars}} kmph
+                                    </li>
+                                    <li>
+                                        <span>Average time of traffic jams: </span> {{item.jam_time}} h.
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,6 +254,23 @@
 </script>
 
 <style>
+.map-detail {
+    align-self: baseline;
+    font-size: 18px;
+    padding: 20px 0 0 10px;
+}
+
+.map-detail ul {
+    padding: 0;
+}
+
+.map-detail li {
+    list-style: none;
+}
+
+.map-detail li span {
+    font-weight: 700;
+}
 
 .district-title {
     font-size: 20px;

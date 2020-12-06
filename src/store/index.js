@@ -125,50 +125,17 @@ export default {
     // }
   },
 
-  login({ commit, dispatch }, payload) {
-    let formData = new FormData();
+  login({ commit }, payload) {
 
-    for (let key in payload.data) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (payload.data.hasOwnProperty(key)) {
-        formData.append(key, payload.data[key]);
-      }
-    }
-
-    return axios
-      .post("http://console.uz/login/", formData)
-      .then(async (res) => {
-        // console.log(res)
-        if (res && res.data) {
-          // console.log('Index data:', res.data);
-
-          // console.log(res)
-          // if (payload.saveAuth) localStorage.setItem("token", res.data.token);
-          // else {
-          //   sessionStorage.setItem("token", res.data.token);
-          // }
-          // Api.defaults.headers.common[
-          //   "Authorization"
-          // ] = `Token ${res.data.token}`;
-          commit("setAuthorization", true);
-          commit("setProfile", res.data);
-
-          // await dispatch("getProfileInfo");
-
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((e) => {
-        if (e && e.response) {
-          if (e.response.status == 400) {
-            // alert("Неверный логин или пароль");
-          }
-        }
-        return false;
-      });
+    if (payload.username == 'admin' && payload.password == 'admin') {
+      commit("setAuthorization", true);
+      commit("setProfile", payload);
+      // location.href = "/";
+      return true
+    } 
+    return false
   },
+
   logout({ commit }) {
     // if (confirm('Хотите выйти из системы?')) {
     commit("setAuthorization", false);

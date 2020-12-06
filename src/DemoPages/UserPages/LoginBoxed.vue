@@ -33,10 +33,10 @@
                                     </b-form-input>
                                 </b-form-group>
                                 <div class="divider"/>
-                                <h6 class="mb-0">
+                                <!-- <h6 class="mb-0">
                                     No account?
                                     <router-link :to="{ path: '/register'}" class="text-primary">Sign up now</router-link>
-                                </h6>
+                                </h6> -->
                             </div>
                             <div class="modal-footer clearfix">
                                 <div class="float-right">
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="text-center text-white opacity-8 mt-3">
-                        Copyright &copy; Console.uz 2020
+                        <!-- Copyright &copy; Console.uz 2020 -->
                     </div>
                 </b-col>
             </div>
@@ -69,22 +69,27 @@ export default {
 
     methods: {
         async login() {
-            let t = { data: { ...this.form } };
+            // let t = { data: { ...this.form } };
             // console.log("t:", t);
             this.loading = true;
             // this.$refs.usernameRef.focus();
 
-            // let done = await this.$store.dispatch("login", t);
+            let done = await this.$store.dispatch("login", this.form)
+                .then((result) => {
+                    if(result) this.$router.push({ path: "/" });
+                }).catch((err) => {
+                    
+                });
 
             // console.log("done", done)
+            // if(this.form.username == 'admin' && this.form.password == 'admin')
+            //     this.$router.push({ path: "/" });
 
-            this.$router.push({ path: "/directory" });
             // if (done) {
             //     this.$router.push({ path: "/directory" });
             // } else {
             //     this.login_is_incorrect = true;
             // }
-            // this.loading = false;
         }
     },
 }
