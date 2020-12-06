@@ -15,47 +15,77 @@
                                     </h4>
                                 </div>
                                 <b-form-group id="exampleInputGroup1"
-                                              label-for="exampleInput1"
-                                              description="We'll never share your email with anyone else.">
+                                              label-for="exampleInput1">
                                     <b-form-input id="exampleInput1"
                                                   type="email"
                                                   required
-                                                  placeholder="Enter email...">
+                                                  v-model="form.username"
+                                                  placeholder="Enter username...">
                                     </b-form-input>
                                 </b-form-group>
                                 <b-form-group id="exampleInputGroup2"
                                               label-for="exampleInput2">
                                     <b-form-input id="exampleInput2"
                                                   type="password"
+                                                  v-model="form.password"
                                                   required
                                                   placeholder="Enter password...">
                                     </b-form-input>
                                 </b-form-group>
-                                <b-form-checkbox name="check" id="exampleCheck">
-                                    Keep me logged in
-                                </b-form-checkbox>
                                 <div class="divider"/>
                                 <h6 class="mb-0">
                                     No account?
-                                    <a href="javascript:void(0);" class="text-primary">Sign up now</a>
+                                    <router-link :to="{ path: '/register'}" class="text-primary">Sign up now</router-link>
                                 </h6>
                             </div>
                             <div class="modal-footer clearfix">
-                                <div class="float-left">
-                                    <a href="javascript:void(0);" class="btn-lg btn btn-link">Recover
-                                        Password</a>
-                                </div>
                                 <div class="float-right">
-                                    <b-button variant="primary" size="lg">Login to Dashboard</b-button>
+                                    <b-button variant="primary" size="lg" @click="login">Login to Dashboard</b-button>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="text-center text-white opacity-8 mt-3">
-                        Copyright &copy; ArchitectUI 2019
+                        Copyright &copy; Console.uz 2020
                     </div>
                 </b-col>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            form: {
+                username: '',
+                password: ''
+            },
+            loading: false,
+            login_is_incorrect: false
+        }
+    },
+
+    methods: {
+        async login() {
+            let t = { data: { ...this.form } };
+            // console.log("t:", t);
+            this.loading = true;
+            // this.$refs.usernameRef.focus();
+
+            // let done = await this.$store.dispatch("login", t);
+
+            // console.log("done", done)
+
+            this.$router.push({ path: "/directory" });
+            // if (done) {
+            //     this.$router.push({ path: "/directory" });
+            // } else {
+            //     this.login_is_incorrect = true;
+            // }
+            // this.loading = false;
+        }
+    },
+}
+</script>

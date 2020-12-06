@@ -4,10 +4,10 @@ export default {
   extends: Radar,
   mounted() {
     this.renderChart({
-      labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
       datasets: [
         {
-          label: 'My First dataset',
+          label: 'root',
           backgroundColor: 'rgba(179,181,198,0.2)',
           borderColor: 'rgba(179,181,198,1)',
           pointBackgroundColor: 'rgba(179,181,198,1)',
@@ -17,7 +17,7 @@ export default {
           data: [65, 59, 90, 81, 56, 55, 40]
         },
         {
-          label: 'My Second dataset',
+          label: 'Khasanboev',
           backgroundColor: 'rgba(255,99,132,0.2)',
           borderColor: 'rgba(255,99,132,1)',
           pointBackgroundColor: 'rgba(255,99,132,1)',

@@ -1,0 +1,81 @@
+
+
+.directory {
+
+    &--tabs {
+      list-style: none;
+      padding: 0;
+    }
+
+    &--content {
+        list-style: none;
+        height: calc(100% - 40px);
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    &--content li {
+        padding: 10px 0;
+        font-size: 18px;
+    }
+
+    &--content li .icons {
+        padding: 0;
+        margin: 0;
+    }
+
+    &--content li i {
+        margin: 0 10px;
+        cursor: pointer;
+    }
+}
+
+.dir-tab span{
+  margin-left: 10px;
+}
+
+li.dir-tab {
+  border-radius: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+li.dir-tab.active {
+  background-color: #f4f4f4;
+}
+
+.dir-tab a {
+  outline: none !important;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.dir-tab:hover a {
+  color: #6cc3d5;
+}
+
+.custom-card .card-title {
+  font-size: 22px;
+}
+
+.people-content {
+  height: calc(100% - 200px);
+  overflow-y: auto;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.vs--searchable .vs__dropdown-toggle {
+  padding: 0.375rem 0.75rem;
+}
+
+.vs__search, .vs__search:focus {
+  padding: 0 !important; 
+}
+
+.vs__selected-options, .vs--single .vs__selected {
+  padding: 0 !important;
+  margin: 0 !important;
+}

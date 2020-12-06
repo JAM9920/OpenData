@@ -1,34 +1,49 @@
 import {Line} from 'vue-chartjs'
 
 export default {
+  props: {
+    data: Array,
+    color: String
+  },
   extends: Line,
+  watch: {
+    data(newValue) {
+      if(newValue)
+        this.render()
+    }
+  },
+  methods: {
+    render() {
+      this.renderChart({
+        labels: ['2016', '2017', '2018', '2019', '2020'],
+        datasets: [
+          {
+            label: 'Tashkent',
+            fill: false,
+            lineTension: 0.1,
+            backgroundColor: this.color,
+            borderColor: this.color,
+            borderCapStyle: 'round',
+            borderDash: [],
+            borderDashOffset: 0.0,
+            borderJoinStyle: 'miter',
+            pointBorderColor: this.color,
+            pointBackgroundColor: '#ffffff',
+            pointBorderWidth: 2,
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: this.color,
+            pointHoverBorderColor: this.color,
+            pointHoverBorderWidth: 2,
+            pointRadius: 1,
+            pointHitRadius: 10,
+            data: this.data
+          },
+        ]
+      }, {responsive: true, maintainAspectRatio: false})
+  
+    }
+  },
   mounted() {
-    this.renderChart({
-      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-      datasets: [
-        {
-          label: 'My First dataset',
-          fill: false,
-          lineTension: 0.1,
-          backgroundColor: '#ed0f51',
-          borderColor: '#ed0f51',
-          borderCapStyle: 'round',
-          borderDash: [],
-          borderDashOffset: 0.0,
-          borderJoinStyle: 'miter',
-          pointBorderColor: '#ed0f51',
-          pointBackgroundColor: '#ffffff',
-          pointBorderWidth: 2,
-          pointHoverRadius: 10,
-          pointHoverBackgroundColor: '#ed0f51',
-          pointHoverBorderColor: '#ed0f51',
-          pointHoverBorderWidth: 2,
-          pointRadius: 1,
-          pointHitRadius: 10,
-          data: [65, 59, 80, 81, 56, 55, 40]
-        }
-      ]
-    }, {responsive: true, maintainAspectRatio: false})
-
+    this.render()
   }
 }

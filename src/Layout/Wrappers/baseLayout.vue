@@ -10,9 +10,9 @@
             <div class="app-main__inner">
                 <slot></slot>
             </div>
-            <transition name="fade" mode="out-in" appear>
+            <!-- <transition name="fade" mode="out-in" appear>
                 <Footer/>
-            </transition>
+            </transition> -->
         </div>
         <!-- Modal Component -->
         <b-modal id="modal1" title="Bootstrap-Vue">
@@ -30,7 +30,7 @@
 <script>
     import Header from "../Components/Header";
     import Sidebar from "../Components/Sidebar";
-    import Footer from "../Components/Footer";
+    // import Footer from "../Components/Footer";
     import VuePerfectScrollbar from 'vue-perfect-scrollbar'
 
     import {library} from '@fortawesome/fontawesome-svg-core'
@@ -47,7 +47,7 @@
         components: {
             Header,
             Sidebar,
-            Footer,
+            // Footer,
             VuePerfectScrollbar,
             'font-awesome-icon': FontAwesomeIcon,
         },
